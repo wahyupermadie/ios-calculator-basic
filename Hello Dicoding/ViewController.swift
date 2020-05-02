@@ -37,7 +37,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetValue(_ sender: Any) {
-        resetView()
+        // Membuat button aksi untuk alert.
+        let defaultAction = UIAlertAction(title: "Agree",
+            style: .default) { (action) in
+                self.resetView()
+        }
+           
+        let cancelAction = UIAlertAction(title: "Disagree",
+            style: .cancel) { (action) in
+            // Merespon pengguna ketika memilih action ini.
+        }
+         
+        // Membuat dan mengatur alert controller.
+        let alert = UIAlertController(title: "Are you sure to reset the calculation result ?",
+            message: "Click Agree to reset the result",
+            preferredStyle: .alert)
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+                
+        self.present(alert, animated: true)
     }
     
 }
